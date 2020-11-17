@@ -4,11 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars');
+var db = require('./config/connection');
+var passport = require('passport');
+var session = require('express-session');
 
 var blogRouter = require('./routes/blog');
 var adminRouter = require('./routes/admin');
 
 var app = express();
+
+// Passport Config
+require('./config/passport')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,7 +32,29 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+
+app.use(session({ secret: "key", cookie: { maxAge: 600000 } }));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  console.log('req.session: ',req.session)
+  console.log('req.user: ',req.user)
+  next()
+})
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Call db connection
+db.connect((err) => {
+  if (err) console.log("Connection error" + err);
+  else console.log("Database connected Successfully");
+});
 
 app.use('/', blogRouter);
 app.use('/admin', adminRouter);

@@ -1,0 +1,32 @@
+form label {
+    color: #949494;
+    font-size: 12px;
+}
+
+.form-group {
+    padding: 0%;
+}
+
+.form-control {
+    text-decoration: none;
+    outline: none;
+    border-radius: 0%;
+    border: none;
+}
+
+.form-control:focus, .btn:focus {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
+form .btn {
+    background-color: #0093C2;
+    border-color: #0093C2;
+    border-radius: 0%;
+}
+
+form .btn:hover {
+    background-color: #01485f;
+    border-color: #01485f;
+}
