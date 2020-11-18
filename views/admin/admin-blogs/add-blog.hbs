@@ -15,10 +15,9 @@
                 <label for="category">Category</label>
                 <select class="form-control" name="category" id="category">
                     <option selected disabled>Select Category</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    {{#each categories}}
+                    <option>{{ this.category }}</option>
+                    {{/each}}
                 </select>
             </div>
             <div class="form-group col-lg-6">

@@ -62,7 +62,7 @@ module.exports = {
 
     editBlog: (blogId, editedBlog) => {
         return new Promise((resolve, reject) => {
-            db.get().collection(collections.BLOG_COLLECTION).updateOne({ _id: objectId(blogId) },{
+            db.get().collection(collections.BLOG_COLLECTION).updateOne({ _id: objectId(blogId) }, {
                 $set: {
                     title: editedBlog.title,
                     blog: editedBlog.blog,
@@ -107,7 +107,7 @@ module.exports = {
 
     editCategory: (categoryId, editedCategory) => {
         return new Promise((resolve, reject) => {
-            db.get().collection(collections.CATEGORY_COLLECTION).updateOne({ _id: objectId(categoryId) },{
+            db.get().collection(collections.CATEGORY_COLLECTION).updateOne({ _id: objectId(categoryId) }, {
                 $set: {
                     category: editedCategory.category
                 }

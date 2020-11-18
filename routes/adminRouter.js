@@ -24,7 +24,9 @@ router.get('/view-blogs', function (req, res, next) {
 });
 
 router.get('/add-new-blog', (req, res) => {
-  res.render('admin/admin-blogs/add-blog', { admin: true })
+  adminHelpers.getCategories().then((categories) => {
+    res.render('admin/admin-blogs/add-blog', { admin: true, categories })
+  })
 })
 
 router.post('/add-new-blog', (req, res) => {
@@ -56,9 +58,11 @@ router.get('/delete-blog', (req, res) => {
   })
 })
 
-router.get('/edit-blog', (req, res) => {
+router.get('/edit-blog', async (req, res) => {
+  let categories = await adminHelpers.getCategories()
   adminHelpers.getBlogDetails(req.query.id).then((blog) => {
-    res.render('admin/admin-blogs/edit-blog', { admin: true, blog })
+    console.log(blog)
+    res.render('admin/admin-blogs/edit-blog', { admin: true, blog, categories})
   })
 })
 
@@ -91,7 +95,6 @@ router.post('/add-category', (req, res) => {
 
 router.get('/view-categories', (req, res) => {
   adminHelpers.getCategories().then((categories) => {
-    console.log('----------categories----',categories)
     res.render('admin/admin-category/view-category', { admin: true, categories })
   })
 })

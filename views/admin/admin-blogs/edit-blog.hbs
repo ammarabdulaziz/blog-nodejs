@@ -13,11 +13,10 @@
             <div class="form-group col-lg-6">
                 <label for="category">Category</label>
                 <select class="form-control" name="category" id="category">
-                    <option disabled>{{blog.category}}</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option selected>{{blog.category}}</option>
+                    {{#each categories}}
+                    <option>{{this.category}}</option>
+                    {{/each}}
                 </select>
             </div>
             <div class="form-group col-4">
