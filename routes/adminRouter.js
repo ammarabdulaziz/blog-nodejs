@@ -1,4 +1,5 @@
 const { response } = require('express');
+const fs = require('fs')
 var express = require('express');
 var router = express.Router();
 const adminHelpers = require('../helpers/admin-Helpers')
@@ -11,7 +12,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/view-blogs', function (req, res, next) {
-  let blogs = adminHelpers.getBlogs().then((blogs)=>{
+  let blogs = adminHelpers.getBlogs().then((blogs) => {
     // console.log(blogs)
     res.render('admin/admin-blogs/view-blogs', { admin: true, blogs });
   })
@@ -43,9 +44,15 @@ router.post('/add-new-blog', (req, res) => {
   })
 })
 
-router.get('/delete-blog', (req,res) => {
+router.get('/delete-blog', (req, res) => {
   let blogId = req.query.id;
   adminHelpers.deleteBlog(blogId).then((response) => {
+    const path = './public/blog-images/' + blogId + '.png'
+    try {
+      fs.unlinkSync(path)
+    } catch (err) {
+      console.error('------file delete error',err)
+    }
     res.redirect('/admin')
   })
 })
