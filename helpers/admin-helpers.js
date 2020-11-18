@@ -34,7 +34,6 @@ module.exports = {
 
         blogDetails.date = date;
         db.get().collection(collections.BLOG_COLLECTION).insertOne(blogDetails).then((data) => {
-            // console.log(data);
             callback(data.ops[0]._id);
         })
     },
@@ -43,6 +42,14 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             let blogs = await db.get().collection(collections.BLOG_COLLECTION).find().sort({ date: -1 }).toArray()
             resolve(blogs)
+        })
+    },
+
+    deleteBlog: (blogId) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collections.BLOG_COLLECTION).removeOne({ _id:objectId(blogId)}).then((response) => {
+                resolve(response)
+            })
         })
     }
 

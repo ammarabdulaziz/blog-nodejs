@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/view-blogs', function (req, res, next) {
   let blogs = adminHelpers.getBlogs().then((blogs)=>{
-    console.log(blogs)
+    // console.log(blogs)
     res.render('admin/admin-blogs/view-blogs', { admin: true, blogs });
   })
 });
@@ -39,6 +39,13 @@ router.post('/add-new-blog', (req, res) => {
         console.log(err)
       }
     })
+  })
+})
+
+router.get('/delete-blog', (req,res) => {
+  let blogId = req.query.id;
+  adminHelpers.deleteBlog(blogId).then((response) => {
+    res.redirect('/admin')
   })
 })
 
