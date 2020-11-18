@@ -1,46 +1,47 @@
-  <link rel="stylesheet" href="/stylesheets/admin.css">
+<link rel="stylesheet" href="/stylesheets/admin.css">
 
-  <div class="wrapper">
-    <nav id="sidebar">
-      <div class="sidebar-header">
-        <img src="/Images/Omar.png" alt="Omar" class="img-fluid brand-image">
-      </div>
-
-      <ul class="list-unstyled components">
-        <li class="active">
-          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-home pr-2"></i> Home</a>
-          <ul class="collapse list-unstyled" id="homeSubmenu">
-            <li>
-              <a href="#">View Blogs</a>
-            </li>
-            <li>
-              <a href="#">Add New Blog</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-list-ul pr-2"></i> Categories</a>
-          <ul class="collapse list-unstyled" id="pageSubmenu">
-            <li>
-              <a href="#">View Catogories</a>
-            </li>
-            <li>
-              <a href="#">Add New Category</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <a href="/admin/logout" class="col-10 offset-1 btn logout-btn"><i class="fa fa-sign-out"></i> Logout</a>
-    </nav>
-
-    <div class="content">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <button type="button" id="sidebarCollapse" class="btn btn-info">
-            <i class="fa fa-align-justify"></i>
-          </button>
-          <h3 class="nav-head">Admin Dashboard</h3>
-        </div>
-      </nav>
+<div class="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <img src="/Images/Omar.png" alt="Omar" class="img-fluid brand-image">
     </div>
-  </div>
+
+    <ul class="list-unstyled components">
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
+            class="fa fa-home pr-2"></i> Home</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a href="#">View Blogs</a>
+          </li>
+          <li>
+            <a href="/admin/add-new-blog">Add New Blog</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
+            class="fa fa-list-ul pr-2"></i> Categories</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li>
+            <a href="#">View Catogories</a>
+          </li>
+          <li>
+            <a href="#">Add New Category</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <button class="col-10 offset-1 btn logout-btn"><i class="fa fa-sign-out"></i> Logout</button>
+  </nav>
+
+  <div class="content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="fa fa-align-justify"></i>
+        </button>
+        <h3 class="nav-head">Admin Dashboard</h3>
+      </div>
+    </nav>
+    

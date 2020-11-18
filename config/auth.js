@@ -3,8 +3,8 @@ module.exports = {
         if (req.isAuthenticated()) {
             return next();
         }
-        res.status(401).json({ msg: 'Not authorized' })
-        req.flash('error_msg', 'Please log in to view that resource');
+        // res.status(401).json({ msg: 'Not authorized' })
+        // req.flash('error_msg', 'Please log in to view that resource');
         res.redirect('/login');
     },
 

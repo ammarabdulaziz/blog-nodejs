@@ -4,12 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars');
+var fileUpload = require('express-fileupload');
 var db = require('./config/connection');
 var passport = require('passport');
 var session = require('express-session');
 
-var blogRouter = require('./routes/blog');
-var adminRouter = require('./routes/admin');
+var blogRouter = require('./routes/blogRouter');
+var adminRouter = require('./routes/adminRouter');
 
 var app = express();
 
@@ -28,11 +29,11 @@ app.engine('hbs', hbs({
   partialsDir: __dirname + '/views/partials/'
 }));
 
+app.use(fileUpload());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 
 app.use(session({ secret: "key", cookie: { maxAge: 600000 } }));
 
@@ -41,8 +42,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  console.log('req.session: ',req.session)
-  console.log('req.user: ',req.user)
+  // console.log('req.session: ',req.session)
+  // console.log('req.user: ',req.user)
   next()
 })
 
