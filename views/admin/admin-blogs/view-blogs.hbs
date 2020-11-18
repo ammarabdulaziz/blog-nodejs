@@ -16,7 +16,7 @@
                 <th scope="row">{{ this.date }}</th>
                 <td>{{ this.title }}</td>
                 <td>{{ this.category }}</td>
-                <td><a class="btn btn-sm btn-success" href="#"><i class="fa fa-eye"></i></a></td>
+                <td><a class="btn btn-sm btn-success" href="/admin/read-blog?id={{this._id}}"><i class="fa fa-eye"></i></a></td>
                 <td><a class="btn btn-sm btn-info" href="/admin/edit-blog?id={{this._id}}"><i class="fa fa-edit"></i></a></td>
                 <td><a class="btn btn-sm btn-danger" href="/admin/delete-blog?id={{this._id}}"  onclick="return confirm('Are you sure you want to delete this Blog?')"><i class="fa fa-trash-o"></i></a></td>
             </tr>

@@ -1,4 +1,5 @@
 module.exports={
     ADMIN_COLLECTION:'admin',
-    BLOG_COLLECTION:'blogs'
+    BLOG_COLLECTION:'blogs',
+    CATEGORY_COLLECTION:'category'
 }

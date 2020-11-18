@@ -25,7 +25,7 @@ module.exports = {
         let day = today.getDate();
         let hours = today.getHours();
         let minutes = today.getMinutes();
-        var ampm = hours >= 12 ? 'Pm' : 'Am';
+        var ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0' + minutes : minutes;
@@ -72,6 +72,48 @@ module.exports = {
                 resolve()
             })
         })
-    }
+    },
 
+    // Category helpers
+    addCategory: (category) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collections.CATEGORY_COLLECTION).insertOne(category).then(() => {
+                resolve()
+            })
+        })
+    },
+
+    getCategories: () => {
+        return new Promise(async (resolve, reject) => {
+            let categories = await db.get().collection(collections.CATEGORY_COLLECTION).find().toArray()
+            resolve(categories)
+        })
+    },
+
+    deleteCategory: (categoryId) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collections.CATEGORY_COLLECTION).removeOne({ _id: objectId(categoryId) }).then((response) => {
+                resolve(response)
+            })
+        })
+    },
+
+    getCategoryDetails: (categoryId) => {
+        return new Promise(async (resolve, response) => {
+            let category = await db.get().collection(collections.CATEGORY_COLLECTION).findOne({ _id: objectId(categoryId) })
+            resolve(category)
+        })
+    },
+
+    editCategory: (categoryId, editedCategory) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collections.CATEGORY_COLLECTION).updateOne({ _id: objectId(categoryId) },{
+                $set: {
+                    category: editedCategory.category
+                }
+            }).then((respone) => {
+                resolve()
+            })
+        })
+    }
 }
