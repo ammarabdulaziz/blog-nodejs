@@ -1,0 +1,39 @@
+<div class="container">
+    <form action="/admin/edit-blog?id={{blog._id}}" method="POST" enctype="multipart/form-data" class="blog-form">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input name="title" id="title" class="form-control" placeholder="Blog title" value="{{blog.title}}">
+        </div>
+        <div class="form-group">
+            <label for="blog">Blog</label>
+            <textarea rows="7" name="blog" id="blog" class="form-control"
+                placeholder="Your blog goes here..">{{blog.blog}}</textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                <label for="category">Category</label>
+                <select class="form-control" name="category" id="category">
+                    <option disabled>{{blog.category}}</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group col-4">
+                <label for="image">Image</label>
+                <input type="file" class="form-control-file btn btn-light btn-sm" name="image" onchange="viewImage(event)">
+            </div>
+                <img src="/blog-images/{{blog._id}}.png" alt="" id="image" style="width: 100px; hight: auto">
+        </div>
+        <button type="submit" class="btn btn-sm btn-block add-btn p-2 mt-3">Add Blog</button>
+    </form>
+</div>
+</div>
+</div>
+
+<script>
+    function viewImage(event) {
+        document.getElementById('image').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

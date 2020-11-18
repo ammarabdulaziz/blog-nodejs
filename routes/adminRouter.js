@@ -1,3 +1,4 @@
+const { response } = require('express');
 var express = require('express');
 var router = express.Router();
 const adminHelpers = require('../helpers/admin-Helpers')
@@ -46,6 +47,23 @@ router.get('/delete-blog', (req,res) => {
   let blogId = req.query.id;
   adminHelpers.deleteBlog(blogId).then((response) => {
     res.redirect('/admin')
+  })
+})
+
+router.get('/edit-blog', (req, res) => {
+  adminHelpers.getBlogDetails(req.query.id).then((blog) => {
+    console.log(blog)
+    res.render('admin/admin-blogs/edit-blog', { admin: true, blog })
+  })
+})
+
+router.post('/edit-blog', (req, res) => {
+  adminHelpers.editBlog(req.query.id, req.body).then(() => {
+    res.redirect('/admin')
+    if (req.files.image) {
+      let image = req.files.image
+      image.mv('./public/blog-images/' + req.query.id + '.png')
+    }
   })
 })
 

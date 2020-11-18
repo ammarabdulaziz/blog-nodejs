@@ -47,8 +47,29 @@ module.exports = {
 
     deleteBlog: (blogId) => {
         return new Promise((resolve, reject) => {
-            db.get().collection(collections.BLOG_COLLECTION).removeOne({ _id:objectId(blogId)}).then((response) => {
+            db.get().collection(collections.BLOG_COLLECTION).removeOne({ _id: objectId(blogId) }).then((response) => {
                 resolve(response)
+            })
+        })
+    },
+
+    getBlogDetails: (blogId) => {
+        return new Promise(async (resolve, response) => {
+            let blog = await db.get().collection(collections.BLOG_COLLECTION).findOne({ _id: objectId(blogId) })
+            resolve(blog)
+        })
+    },
+
+    editBlog: (blogId, editedBlog) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collections.BLOG_COLLECTION).updateOne({ _id: objectId(blogId) },{
+                $set: {
+                    title: editedBlog.title,
+                    blog: editedBlog.blog,
+                    category: editedBlog.category
+                }
+            }).then((respone) => {
+                resolve()
             })
         })
     }
