@@ -16,12 +16,33 @@ module.exports = {
             })
         })
     },
-    
+
     addBlog: (blogDetails, callback) => {
         // console.log(product);
+        var today = new Date();
+        let month = today.toLocaleString('default', { month: 'short' });
+        let year = today.getFullYear();
+        let day = today.getDate();
+        let hours = today.getHours();
+        let minutes = today.getMinutes();
+        var ampm = hours >= 12 ? 'Pm' : 'Am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+
+        let date = `${day} ${month} ${year}, ${hours}:${minutes} ${ampm}`
+
+        blogDetails.date = date;
         db.get().collection(collections.BLOG_COLLECTION).insertOne(blogDetails).then((data) => {
             // console.log(data);
             callback(data.ops[0]._id);
+        })
+    },
+
+    getBlogs: () => {
+        return new Promise(async (resolve, reject) => {
+            let blogs = await db.get().collection(collections.BLOG_COLLECTION).find().sort({ date: -1 }).toArray()
+            resolve(blogs)
         })
     }
 

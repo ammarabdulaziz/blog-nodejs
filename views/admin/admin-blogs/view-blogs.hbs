@@ -1,0 +1,28 @@
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each blogs}}
+            <tr>
+                <th scope="row">{{ this.date }}</th>
+                <td>{{ this.title }}</td>
+                <td>{{ this.category }}</td>
+                <td><a class="btn btn-sm btn-success" href="#"><i class="fa fa-eye"></i></a></td>
+                <td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-edit"></i></a></td>
+                <td><a class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash-o"></i></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>

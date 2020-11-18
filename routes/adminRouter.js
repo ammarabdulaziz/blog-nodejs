@@ -10,7 +10,10 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/view-blogs', function (req, res, next) {
-  res.render('admin/admin-blogs/view-blogs', { admin: true });
+  let blogs = adminHelpers.getBlogs().then((blogs)=>{
+    console.log(blogs)
+    res.render('admin/admin-blogs/view-blogs', { admin: true, blogs });
+  })
 });
 
 router.get('/logout', (req, res, next) => {
@@ -31,7 +34,7 @@ router.post('/add-new-blog', (req, res) => {
     let image = req.files.image
     image.mv('./public/blog-images/' + id + '.png', (err, done) => {
       if (!err) {
-        res.redirect('/view-blogs');
+        res.redirect('/admin/view-blogs');
       } else {
         console.log(err)
       }
