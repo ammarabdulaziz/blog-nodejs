@@ -153,6 +153,10 @@ body {
     line-height: 28px;
 }
 
+.post-head a{
+    text-decoration: none;
+}
+
 .post-title {
     color: #046A8A;
     font-size: 24px;
@@ -316,6 +320,10 @@ body {
     padding: 2px 0 2px 0;
     font-size: 18px;
     line-height: 1.3rem;
+}
+
+.recent-post-content a{
+    text-decoration: none;
 }
 
 .recent-post-date {

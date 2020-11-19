@@ -10,9 +10,10 @@ const isNotAdmin = require('../config/auth').isNotAdmin
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
+  let categoryDetails = await blogHelpers.getCategoryCount(); //Includes category count for category list side-bar
   let categories = await adminHelpers.getCategories();
   blogHelpers.getBlogs().then((blogs) => {
-    res.render('blogs/index', { blogs, categories });
+    res.render('blogs/index', { blogs, categories, categoryDetails });
   })
 });
 
@@ -49,7 +50,6 @@ router.get('/read-blog', async (req, res) => {
   let categories = await adminHelpers.getCategories(); //includes category details for nav bar
   let categoryDetails = await blogHelpers.getCategoryCount(); //Includes category count for category list side-bar
   adminHelpers.getBlogDetails(req.query.id).then((blog) => {
-    // console.log('---------------------readNext',readNext)
     res.render('blogs/posts', { blog, categories, categoryDetails, readNext })
   })
 })

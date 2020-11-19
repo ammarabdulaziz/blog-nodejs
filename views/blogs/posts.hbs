@@ -53,18 +53,23 @@
         <!-- --------------------------------------------------------- -->
         <div class="col-12 col-lg-4 ">
             <!-- breadcrumb -->
+            {{#if readNext}}
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Read next</li>
             </ol>
+            {{/if}}
             <!-- Recent posts -->
             {{#each readNext}}
             <div class="row recent-post">
                 <div class="col-5 p-0">
-                    <img src="/blog-images/{{this._id}}.png" class="img-fluid recent-post-image" alt="">
+                    <a href="/read-blog?id={{this._id}}&category={{this.category}}">
+                        <img src="/blog-images/{{this._id}}.png" class="img-fluid recent-post-image" alt=""></a>
                 </div>
                 <div class="col-7 my-auto p-3 recent-post-content">
                     <div class="recent-post-category">{{this.category}}</div>
-                    <div class="recent-post-title">{{this.title}}</div>
+                    <a href="/read-blog?id={{this._id}}&category={{this.category}}">
+                        <div class="recent-post-title">{{this.title}}</div>
+                    </a>
                     <div class="recent-post-date">{{this.date}}</div>
                 </div>
             </div>

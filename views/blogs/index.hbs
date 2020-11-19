@@ -1,16 +1,17 @@
 <div class="container">
-        <div class="row">
-            <div class="col-12 recent-posts-bar">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active">Recent Posts</li>
-                </ol>
-            </div>
+    <div class="row">
+        <div class="col-12 recent-posts-bar">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active">Recent Posts</li>
+            </ol>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <!-- Post 1 -->
-            <div class="col-12 col-md-8">
+</div>
+<div class="container">
+    <div class="row">
+        <!-- Post 1 -->
+        <div class="col-12 col-md-8">
+            <a href="/read-blog?id={{blogs.[0]._id}}">
                 <div class="post-1"
                     style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[0]._id}}.png);">
                     <p class="index-head">Recent Posts</p>
@@ -21,14 +22,18 @@
                         <div class="index-caption">{{blogs.[0].blog}}</div>
                     </div>
                 </div>
-                <br>
+            </a>
+            <br>
+        </div>
+        <!------------------------------------------------------------->
+        <div class="col-12 col-md-4">
+            <div class="dummy-box" style="background-color: rgb(255, 255, 255);">
+                <p class="index-head pl-2" style="color: #26272B;">Content</p><br>
             </div>
-            <!------------------------------------------------------------->
-            <div class="col-12 col-md-4">
-                <div class="dummy-box" style="background-color: rgb(255, 255, 255);"><br></div>
-            </div>
-            
-            <div class="col-12 col-md-4">
+        </div>
+
+        <div class="col-12 col-md-4">
+            <a href="/read-blog?id={{blogs.[1]._id}}">
                 <div class="post-4"
                     style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[1]._id}}.png);">
                     <p class="badge">{{blogs.[1].category}}</p>
@@ -38,9 +43,11 @@
                         <div class="index-caption">{{blogs.[1].blog}}</div>
                     </div>
                 </div>
-                <br>
-            </div>
-            <div class="col-12 col-md-4">
+            </a>
+            <br>
+        </div>
+        <div class="col-12 col-md-4">
+            <a href="/read-blog?id={{blogs.[1]._id}}">
                 <div class="post-5"
                     style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[2]._id}}.png);">
                     <p class="badge">{{blogs.[2].category}}</p>
@@ -50,9 +57,11 @@
                         <div class="index-caption">{{blogs.[2].blog}}</div>
                     </div>
                 </div>
-                <br>
-            </div>
-            <div class="col-12 col-md-4">
+            </a>
+            <br>
+        </div>
+        <div class="col-12 col-md-4">
+            <a href="/read-blog?id={{blogs.[1]._id}}">
                 <div class="post-6"
                     style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[3]._id}}.png);">
                     <p class="badge">{{blogs.[3].category}}</p>
@@ -62,9 +71,11 @@
                         <div class="index-caption">{{blogs.[3].blog}}</div>
                     </div>
                 </div>
-                <br>
-            </div>
-            <div class="col-12 col-md-6">
+            </a>
+            <br>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="/read-blog?id={{blogs.[1]._id}}">
                 <div class="post-2"
                     style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[4]._id}}.png);">
                     <p class="badge">{{blogs.[4].category}}</p>
@@ -74,9 +85,11 @@
                         <div class="index-caption">{{blogs.[4].blog}}</div>
                     </div>
                 </div>
-                <br>
-            </div>
-            <div class="col-12 col-md-6">
+            </a>
+            <br>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="/read-blog?id={{blogs.[1]._id}}">
                 <div class="post-3"
                     style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[5]._id}}.png);">
                     <p class="badge">{{blogs.[5].category}}</p>
@@ -86,8 +99,28 @@
                         <div class="index-caption">{{blogs.[5].title}}</div>
                     </div>
                 </div>
-                <br>
-            </div>
-            <!------------------------------------------------------------->
+            </a>
+            <br>
         </div>
+        <div class="col-12 col-lg-5 index-category">
+            <!-- Categories -->
+            <div class="categories">
+                <div class="categories-title">Categories</div>
+                <ul>
+                    {{!-- Do console log and check the data format. Here _id = category name, categoryLookup._id= categoryId --}}
+                    {{#each categoryDetails}}
+                    <li><i class="square-icon"></i><a href="/category?id={{this.categoryLookup._id}}">{{this._id}}
+                            ({{this.count}})</a></li>
+                    <hr>
+                    {{/each}}
+                </ul>
+            </div>
+            <br>
+            <br>
+            <!-- Categories end-->
+        </div>
+        <!------------------------------------------------------------->
     </div>
+        <br>
+        <br>
+</div>
