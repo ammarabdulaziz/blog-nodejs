@@ -1,10 +1,9 @@
-<br>
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-7 ">
             <!-- breadcrumb -->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item active">{{blogs.[0].category}}</li>
             </ol>
             <!-- Posts -->
@@ -24,7 +23,7 @@
                         <div class="row">
                             <div class="col-12 post-content">{{this.blog}}</div>
                             <div class="col-12 read-more">
-                                <a href="/read-more?id={{this._id}}" class="btn btn-primary">READ MORE</a>
+                                <a href="/read-blog?id={{this._id}}&category={{this.category}}" class="btn btn-primary">READ MORE</a>
                             </div>
                         </div>
                     </div>

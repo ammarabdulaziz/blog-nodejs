@@ -67,17 +67,17 @@ module.exports = {
                     }
                 }
             ]).toArray()
-            console.log(categoryDetails)
             resolve(categoryDetails)
+        })
+    },
+
+    getReadNextBlogs: (categoryName) => {
+        return new Promise(async (resolve, reject) => {
+            // let category = await db.get().collection(collections.CATEGORY_COLLECTION).find({ category: categoryName })
+            // category = category.category
+            let readNextBlogs = await db.get().collection(collections.BLOG_COLLECTION).find({ category: categoryName }).sort({ date: -1 }).limit(4).toArray()
+            resolve(readNextBlogs)
         })
     }
 }
 
-
-// aggregate([
-//     {
-//         $group: {
-//             _id : { $category : '$category'}
-//         }
-//     }
-// ])

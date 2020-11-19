@@ -37,9 +37,20 @@ router.get('/category', async (req, res) => {
   let recentBlogs = await blogHelpers.getRecentBlogs()
   let categories = await adminHelpers.getCategories(); //includes category details for nav bar
   let categoryDetails = await blogHelpers.getCategoryCount(); //Includes category count for category list side-bar
-  console.log('----categories',categoryDetails)
   blogHelpers.getCategoryBlogs(req.query.id).then((blogs) => {
-    res.render('blogs/category', {blogs, recentBlogs, categories, categoryDetails})
+    res.render('blogs/category', { blogs, recentBlogs, categories, categoryDetails })
+  })
+})
+
+// Post routes
+router.get('/read-blog', async (req, res) => {
+  // console.log('---------------------req.query.id',req.query.category)
+  let readNext = await blogHelpers.getReadNextBlogs(req.query.category)
+  let categories = await adminHelpers.getCategories(); //includes category details for nav bar
+  let categoryDetails = await blogHelpers.getCategoryCount(); //Includes category count for category list side-bar
+  adminHelpers.getBlogDetails(req.query.id).then((blog) => {
+    // console.log('---------------------readNext',readNext)
+    res.render('blogs/posts', { blog, categories, categoryDetails, readNext })
   })
 })
 
