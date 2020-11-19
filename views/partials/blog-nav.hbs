@@ -19,7 +19,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {{#each categories}}
-              <a class="dropdown-item" href="#">{{this.category}}</a>
+              <a class="dropdown-item" href="/category?id={{this._id}}">{{this.category}}</a>
               {{/each}}
             </div>
           </li>
@@ -41,7 +41,7 @@
       <ul class="nav">
         {{#each categories}}
         <li class="nav-item">
-          <a class="nav-link active" href="#">{{this.category}}</a>
+          <a class="nav-link active" href="/category?id={{this._id}}">{{this.category}}</a>
         </li>
         {{/each}}
       </ul>

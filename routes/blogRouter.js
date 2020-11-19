@@ -12,7 +12,7 @@ const isNotAdmin = require('../config/auth').isNotAdmin
 router.get('/', async (req, res, next) => {
   let categories = await adminHelpers.getCategories();
   blogHelpers.getBlogs().then((blogs) => {
-    res.render('blogs/index', {blogs, categories});
+    res.render('blogs/index', { blogs, categories });
   })
 });
 
@@ -32,6 +32,16 @@ router.post('/login', passport.authenticate('local', {
 }), (err, req, res, next) => {
   if (err) next(err);
 });
+
+router.get('/category', async (req, res) => {
+  let recentBlogs = await blogHelpers.getRecentBlogs()
+  let categories = await adminHelpers.getCategories(); //includes category details for nav bar
+  let categoryDetails = await blogHelpers.getCategoryCount(); //Includes category count for category list side-bar
+  console.log('----categories',categoryDetails)
+  blogHelpers.getCategoryBlogs(req.query.id).then((blogs) => {
+    res.render('blogs/category', {blogs, recentBlogs, categories, categoryDetails})
+  })
+})
 
 
 
