@@ -12,15 +12,13 @@
             <!-- Post 1 -->
             <div class="col-12 col-md-8">
                 <div class="post-1"
-                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(Images/ok.jpg);">
+                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[0]._id}}.png);">
                     <p class="index-head">Recent Posts</p>
-                    <p class="badge">Travel</p>
+                    <p class="badge">{{blogs.[0].category}}</p>
                     <div class="index-content">
-                        <div class="index-title">Satya Nadella Among 9 American CEOs To Meet President-Elect Joe Biden</div>
+                        <div class="index-title">{{blogs.[0].title}}</div>
                         <hr>
-                        <div class="index-caption">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-                            corporis dignissimos. Animi, ipsa consequuntur repudiandaeLorem, ipsum dolor sit amet
-                            consectetur adiisicing elit. </div>
+                        <div class="index-caption">{{blogs.[0].blog}}</div>
                     </div>
                 </div>
                 <br>
@@ -32,68 +30,60 @@
             
             <div class="col-12 col-md-4">
                 <div class="post-4"
-                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(Images/go.jpg);">
-                    <p class="badge">Politics</p>
+                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[1]._id}}.png);">
+                    <p class="badge">{{blogs.[1].category}}</p>
                     <div class="index-content">
-                        <div class="index-title">Sonu Sood Appointed As State Icon Of Punjab By Election Commission</div>
+                        <div class="index-title">{{blogs.[1].title}}</div>
                         <hr>
-                        <div class="index-caption">tetur adipisicing elit. Temporibus,
-                            corporis dignissimos. Animi, ipsa consequuntur repudiandaeLorem, ipsum dolor sit amet
-                            consectetur adipisicing elit. </div>
+                        <div class="index-caption">{{blogs.[1].blog}}</div>
                     </div>
                 </div>
                 <br>
             </div>
             <div class="col-12 col-md-4">
                 <div class="post-5"
-                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(Images/Hai.jpg);">
-                    <p class="badge">Entertainment</p>
+                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[2]._id}}.png);">
+                    <p class="badge">{{blogs.[2].category}}</p>
                     <div class="index-content">
-                        <div class="index-title">Congress Leader Alleges Overcharging By Air India On Vande Bharat Flights</div>
+                        <div class="index-title">{{blogs.[2].title}}</div>
                         <hr>
-                        <div class="index-caption">Lorem, ipsum dolor sit daeLorem, ipsum dolor sit amet consectetur
-                            adipisicing elit. </div>
+                        <div class="index-caption">{{blogs.[2].blog}}</div>
                     </div>
                 </div>
                 <br>
             </div>
             <div class="col-12 col-md-4">
                 <div class="post-6"
-                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(Images/no.jpg);">
-                    <p class="badge">Cinema</p>
+                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[3]._id}}.png);">
+                    <p class="badge">{{blogs.[3].category}}</p>
                     <div class="index-content">
-                        <div class="index-title">With Covid Caution, Karnataka Colleges Gear Up For Reopening</div>
+                        <div class="index-title">{{blogs.[3].title}}</div>
                         <hr>
-                        <div class="index-caption">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-                            corporis dignissimos. Animi, ipsa consequuntur repudiandaeLorem, ipsum dolor sit amet
-                            consectetur adipisicing elit. </div>
+                        <div class="index-caption">{{blogs.[3].blog}}</div>
                     </div>
                 </div>
                 <br>
             </div>
             <div class="col-12 col-md-6">
                 <div class="post-2"
-                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(Images/bye.jpg);">
-                    <p class="badge">Category</p>
+                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[4]._id}}.png);">
+                    <p class="badge">{{blogs.[4].category}}</p>
                     <div class="index-content">
-                        <div class="index-title">Delhi Reports 3,797 Covid Cases In 24 Hours, Number Of Tests Below 30K</div>
+                        <div class="index-title">{{blogs.[4].title}}</div>
                         <hr>
-                        <div class="index-caption">Lorisicing elit. Temporibus,
-                            corporis dignissimos. Animi, ipsa consequuntur repudiandaeLorem, ipsum dolor sit amet
-                            consectetur adipisicing elit. </div>
+                        <div class="index-caption">{{blogs.[4].blog}}</div>
                     </div>
                 </div>
                 <br>
             </div>
             <div class="col-12 col-md-6">
                 <div class="post-3"
-                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(Images/come.jpg);">
-                    <p class="badge">Books</p>
+                    style="background-image: linear-gradient(hsla(228, 6%, 16%, 0.3),70%,#26272B), url(/blog-images/{{blogs.[5]._id}}.png);">
+                    <p class="badge">{{blogs.[5].category}}</p>
                     <div class="index-content">
-                        <div class="index-title">ICC Chairman's Election Could See Three Rounds Of Voting: Report</div>
+                        <div class="index-title">{{blogs.[5].title}}</div>
                         <hr>
-                        <div class="index-caption">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-                            corporis dignissimos. Animi, ipsa conseicing elit. </div>
+                        <div class="index-caption">{{blogs.[5].title}}</div>
                     </div>
                 </div>
                 <br>

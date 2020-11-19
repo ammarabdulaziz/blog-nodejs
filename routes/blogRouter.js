@@ -2,14 +2,18 @@ var express = require('express');
 const { response } = require('../app');
 var router = express.Router();
 const adminHelpers = require('../helpers/admin-Helpers')
+const blogHelpers = require('../helpers/blog-Helpers')
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const isAdmin = require('../config/auth').isAdmin
 const isNotAdmin = require('../config/auth').isNotAdmin
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('blogs/index');
+router.get('/', async (req, res, next) => {
+  let categories = await adminHelpers.getCategories();
+  blogHelpers.getBlogs().then((blogs) => {
+    res.render('blogs/index', {blogs, categories});
+  })
 });
 
 router.get('/login', isNotAdmin, function (req, res, next) {
