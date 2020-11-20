@@ -7,7 +7,7 @@
     </div>
 
     <ul class="list-unstyled components">
-      <li class="active">
+      <li class="{{#if active.blogView}}active{{/if}}">
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
             class="fa fa-home pr-2"></i> Home</a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -19,7 +19,7 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li class="{{#if active.categoryView}}active{{/if}}">
         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
             class="fa fa-list-ul pr-2"></i> Categories</a>
         <ul class="collapse list-unstyled" id="pageSubmenu">

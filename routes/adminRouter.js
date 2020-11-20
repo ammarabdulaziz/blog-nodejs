@@ -19,13 +19,13 @@ router.get('/logout', isAdmin, (req, res, next) => {
 // Blog Routes
 router.get('/view-blogs', isAdmin, function (req, res, next) {
   let blogs = adminHelpers.getBlogs().then((blogs) => {
-    res.render('admin/admin-blogs/view-blogs', { admin: true, blogs });
+    res.render('admin/admin-blogs/view-blogs', { admin: true, blogs , active: {blogView: true }});
   })
 });
 
 router.get('/add-new-blog', isAdmin, (req, res) => {
   adminHelpers.getCategories().then((categories) => {
-    res.render('admin/admin-blogs/add-blog', { admin: true, categories })
+    res.render('admin/admin-blogs/add-blog', { admin: true, categories , active: {blogView: true }})
   })
 })
 
@@ -62,7 +62,7 @@ router.get('/edit-blog', isAdmin, async (req, res) => {
   let categories = await adminHelpers.getCategories()
   adminHelpers.getBlogDetails(req.query.id).then((blog) => {
     console.log(blog)
-    res.render('admin/admin-blogs/edit-blog', { admin: true, blog, categories})
+    res.render('admin/admin-blogs/edit-blog', { admin: true, blog, categories, active: {blogView: true }})
   })
 })
 
@@ -78,13 +78,13 @@ router.post('/edit-blog', isAdmin, (req, res) => {
 
 router.get('/read-blog', isAdmin, (req, res) => {
   adminHelpers.getBlogDetails(req.query.id).then((blog) => {
-    res.render('admin/admin-blogs/read-blog', { admin: true, blog })
+    res.render('admin/admin-blogs/read-blog', { admin: true, blog , active: {blogView: true }})
   })
 })
 
 // Category Routes
 router.get('/add-category', isAdmin, (req, res) => {
-  res.render('admin/admin-category/add-category', { admin: true })
+  res.render('admin/admin-category/add-category', { admin: true , active: {categoryView: true }})
 })
 
 router.post('/add-category', isAdmin, (req, res) => {
@@ -95,7 +95,7 @@ router.post('/add-category', isAdmin, (req, res) => {
 
 router.get('/view-categories', isAdmin, (req, res) => {
   adminHelpers.getCategories().then((categories) => {
-    res.render('admin/admin-category/view-category', { admin: true, categories })
+    res.render('admin/admin-category/view-category', { admin: true, categories , active: {categoryView: true }})
   })
 })
 
@@ -107,7 +107,7 @@ router.get('/delete-category', isAdmin, (req, res) => {
 
 router.get('/edit-category', isAdmin, (req, res) => {
   adminHelpers.getCategoryDetails(req.query.id).then((category) => {
-    res.render('admin/admin-category/edit-category', { admin: true, category })
+    res.render('admin/admin-category/edit-category', { admin: true, category , active: {categoryView: true }})
   })
 })
 

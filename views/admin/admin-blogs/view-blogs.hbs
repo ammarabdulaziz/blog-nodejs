@@ -1,20 +1,18 @@
 <div class="container">
-    <table class="table">
+    <table class="table" id="blog-table">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Date</th>
                 <th scope="col">Title</th>
                 <th scope="col">Category</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th scope="col" id="view"></th>
+                <th scope="col" id="edit"></th>
+                <th scope="col" id="delete"></th>
             </tr>
         </thead>
         <tbody>
             {{#each blogs}}
             <tr>
-                <th scope="row">{{@index}}</th>
                 <th scope="row">{{ this.date }}</th>
                 <td>{{ this.title }}</td>
                 <td>{{ this.category }}</td>
@@ -32,4 +30,3 @@
 </div>
 </div>
 </div>
-

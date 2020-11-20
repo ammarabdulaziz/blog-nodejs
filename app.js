@@ -29,6 +29,31 @@ app.engine('hbs', hbs({
   partialsDir: __dirname + '/views/partials/'
 }));
 
+var hbs = hbs.create({});
+
+// register new function
+hbs.handlebars.registerHelper("check", function (x, y, options) {
+  console.log('--------- x', x)
+  console.log('--------- y', y)
+  if (x == y) {
+    return options.fn(this);
+  }
+});
+// hbs.handlebars.registerHelper( "when",function(operand_1, operator, operand_2, options) {
+//   var operators = {
+//    'eq': function(l,r) { return l == r; },
+//    'noteq': function(l,r) { return l != r; },
+//    'gt': function(l,r) { return Number(l) > Number(r); },
+//    'or': function(l,r) { return l || r; },
+//    'and': function(l,r) { return l && r; },
+//    '%': function(l,r) { return (l % r) === 0; }
+//   }
+//   , result = operators[operator](operand_1,operand_2);
+
+//   if (result) return options.fn(this);
+//   else  return options.inverse(this);
+// });
+
 app.use(fileUpload());
 app.use(logger('dev'));
 app.use(express.json());
@@ -61,12 +86,12 @@ app.use('/', blogRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

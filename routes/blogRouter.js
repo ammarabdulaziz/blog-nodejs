@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
   let categoryDetails = await blogHelpers.getCategoryCount(); //Includes category count for category list side-bar
   let categories = await adminHelpers.getCategories();
   blogHelpers.getBlogs().then((blogs) => {
-    res.render('blogs/index', { blogs, categories, categoryDetails });
+    res.render('blogs/index', { blogs, categories, categoryDetails, active: {index: true }});
   })
 });
 
@@ -34,11 +34,17 @@ router.post('/login', passport.authenticate('local', {
   if (err) next(err);
 });
 
+// {{#is blogs.[0].category categories.category}}active{{/is}}
+
 router.get('/category', async (req, res) => {
   let recentBlogs = await blogHelpers.getRecentBlogs()
   let categories = await adminHelpers.getCategories(); //includes category details for nav bar
   let categoryDetails = await blogHelpers.getCategoryCount(); //Includes category count for category list side-bar
   blogHelpers.getCategoryBlogs(req.query.id).then((blogs) => {
+    activeCategory = blogs[0].category
+    for (i = 0; i < categories.length; i++) {
+      categories[i].activeCategory = activeCategory
+    }
     res.render('blogs/category', { blogs, recentBlogs, categories, categoryDetails })
   })
 })
@@ -50,7 +56,7 @@ router.get('/read-blog', async (req, res) => {
   let categories = await adminHelpers.getCategories(); //includes category details for nav bar
   let categoryDetails = await blogHelpers.getCategoryCount(); //Includes category count for category list side-bar
   adminHelpers.getBlogDetails(req.query.id).then((blog) => {
-    res.render('blogs/posts', { blog, categories, categoryDetails, readNext })
+    res.render('blogs/posts', { blog, categories, categoryDetails, readNext, active: {index: true }})
   })
 })
 

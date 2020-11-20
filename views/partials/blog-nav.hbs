@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a href="/" class="ml-auto"><img src="/Images/Omar.png" alt="Omar" class="img-fluid brand-image"></a>
+      <a href="/" class="ml-0"><img src="/Images/Omar.png" alt="Omar" class="img-fluid brand-image"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,8 +9,8 @@
 
       <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link " href="/">Home</a>
+          <li class="nav-item {{#if active.index}}active{{/if}}">
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item dropdown active">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -19,7 +19,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {{#each categories}}
-              <a class="dropdown-item" href="/category?id={{this._id}}">{{this.category}}</a>
+              <a class="dropdown-item {{#check this.activeCategory this.category}}active{{/check}}" href="/category?id={{this._id}}">{{this.category}}</a>
               {{/each}}
             </div>
           </li>
@@ -41,11 +41,14 @@
       <ul class="nav">
         {{#each categories}}
         <li class="nav-item">
-          <a class="nav-link active" href="/category?id={{this._id}}">{{this.category}}</a>
-        </li>
+          <a class="nav-link {{#check this.activeCategory this.category}}active{{/check}}" href="/category?id={{this._id}}">{{this.category}}</a>
+        </li> 
         {{/each}}
       </ul>
     </div>
   </section>
+  
+   
+ 
   <br>
 </header>
