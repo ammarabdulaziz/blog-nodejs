@@ -13,12 +13,21 @@ module.exports = {
         })
     },
 
-    getCategoryBlogs: (categoryId) => {
+    getCategoryBlogs: (categoryId, reqPage) => {
         return new Promise(async (resolve, reject) => {
+            const itemsPerPage = 1;
+            const page = +reqPage || 1; // pagination
+            let response = {}
             let category = await db.get().collection(collections.CATEGORY_COLLECTION).findOne({ _id: objectId(categoryId) })
             category = category.category
-            let sortedBlogs = await db.get().collection(collections.BLOG_COLLECTION).find({ category: category }).sort({ date: -1 }).toArray()
-            resolve(sortedBlogs)
+            var blogCount = await db.get().collection(collections.BLOG_COLLECTION).find({ category: category }).count()
+            let sortedBlogs = await db.get().collection(collections.BLOG_COLLECTION).find({ category: category }).sort({ date: -1 })
+                .skip((page - 1) * itemsPerPage)
+                .limit(itemsPerPage).toArray()
+
+            response.blogCount = blogCount
+            response.sortedBlogs = sortedBlogs
+            resolve(response)
         })
     },
 

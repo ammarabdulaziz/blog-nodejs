@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-fixed navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a href="/" class="ml-0"><img src="/Images/Omar.png" alt="Omar" class="img-fluid brand-image"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
@@ -19,7 +19,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {{#each categories}}
-              <a class="dropdown-item {{#check this.activeCategory this.category}}active{{/check}}" href="/category?id={{this._id}}">{{this.category}}</a>
+              <a class="dropdown-item {{#check this.activeCategory this.category}}active{{/check}} m-0" href="/category?id={{this._id}}" {{#check this.activeCategory this.category}}style="background-color: #0093C2"{{/check}}>{{this.category}}</a>
               {{/each}}
             </div>
           </li>
@@ -33,7 +33,7 @@
       </div>
     </div>
   </nav>
-
+  
   <section>
     <img class="image-fluid main-bg1" src="images/01.png" alt="image">
     <img class="image-fluid main-bg2" src="images/0.png" alt="image">
@@ -41,13 +41,12 @@
       <ul class="nav">
         {{#each categories}}
         <li class="nav-item">
-          <a class="nav-link {{#check this.activeCategory this.category}}active{{/check}}" href="/category?id={{this._id}}">{{this.category}}</a>
+          <a class="nav-link {{#check this.activeCategory this.category}}active{{/check}}" href="/category?id={{this._id}}&page=1">{{this.category}}</a>
         </li> 
         {{/each}}
       </ul>
     </div>
   </section>
-  
    
  
   <br>

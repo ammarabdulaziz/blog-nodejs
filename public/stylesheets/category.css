@@ -1,6 +1,19 @@
 body {
     background-color: #F5F5F5;
     font-family: 'Noto Sans', sans-serif;
+    scroll-behavior: smooth !important;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #444446;
+}
+
+::-webkit-scrollbar-track {
+    background: #26272B;
 }
 
 .loader-wrapper {
@@ -10,45 +23,81 @@ body {
     top: 0;
     left: 0;
     background-color: #26272B;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
-  }
-  .loader {
+    z-index: 3;
+}
+
+.loader {
     display: inline-block;
     width: 30px;
     height: 30px;
     position: relative;
     border: 4px solid #Fff;
     animation: loader 2s infinite ease;
-  }
-  .loader-inner {
+}
+
+.loader-inner {
     vertical-align: top;
     display: inline-block;
     width: 100%;
     background-color: #fff;
     animation: loader-inner 2s infinite ease-in;
-  }
-  @keyframes loader {
-    0% { transform: rotate(0deg);}
-    25% { transform: rotate(180deg);}
-    50% { transform: rotate(180deg);}
-    75% { transform: rotate(360deg);}
-    100% { transform: rotate(360deg);}
-  }
-  @keyframes loader-inner {
-    0% { height: 0%;}
-    25% { height: 0%;}
-    50% { height: 100%;}
-    75% { height: 100%;}
-    100% { height: 0%;}
-  }
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(180deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-inner {
+    0% {
+        height: 0%;
+    }
+    25% {
+        height: 0%;
+    }
+    50% {
+        height: 100%;
+    }
+    75% {
+        height: 100%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+
+/* -------------------------------------------- */
+
 /* Navbar css */
 
 .navbar {
     background-color: #26272B !important;
     border-color: #26272B !important;
+    z-index: 2;
+}
+
+.navbar-fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: auto;
 }
 
 .navbar-toggler {
@@ -109,14 +158,22 @@ body {
     height: 1em !important;
 }
 
+/* --------------------------------------------- */
+
 /* Main background */
 
 .main-bg1 {
+    margin-top: 45px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     height: auto;
     width: 100%;
 }
 
 .main-bg2 {
+    margin-top: 45px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     height: auto;
     width: 100%;
 }

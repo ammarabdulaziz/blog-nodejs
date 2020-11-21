@@ -37,10 +37,15 @@
             <!-- ----------------------------------------- -->
             <!-- Pagenation -->
             <div class="col-12 pagenation">
-                <div class="pagenation-btn"><a href="#" class="btn active">1</a></div>
-                <div class="pagenation-btn"><a href="#" class="btn">2</a></div>
-                <div class="pagenation-btn"><a href="#" class="btn">3</a></div>
-                <div class="pagenation-btn"><a href="#" class="btn">Next</a></div>
+                {{#if hasPreviousPage}}
+                <div class="pagenation-btn"><a href="/category?id={{categoryId}}&page=1" class="btn">First</a></div>
+                <div class="pagenation-btn"><a href="/category?id={{categoryId}}&page={{previousPage}}" class="btn">{{previousPage}}</a></div>
+                {{/if}}
+                <div class="pagenation-btn"><a href="/category?id={{categoryId}}&page={{currentPage}}" class="btn active">{{currentPage}}</a></div>
+                {{#if hasNextPage}}
+                <div class="pagenation-btn"><a href="/category?id={{categoryId}}&page={{nextPage}}" class="btn">{{nextPage}}</a></div>
+                <div class="pagenation-btn"><a href="/category?id={{categoryId}}&page={{lastPage}}" class="btn">Last</a></div>
+                {{/if}}
             </div>
             <br>
             <!-- Pagenation Ends -->
