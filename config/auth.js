@@ -5,14 +5,18 @@ module.exports = {
         }
         // res.status(401).json({ msg: 'Not authorized' })
         // req.flash('error_msg', 'Please log in to view that resource');
-        res.redirect('/login');
+        else{
+
+            res.redirect('/login');
+        }
     },
 
     isNotAdmin: function (req, res, next) {
         if (!req.isAuthenticated()) {
             return next();
+        }else{
+            res.redirect('/admin/view-blogs');
         }
-        res.redirect('/admin/view-blogs');
     },
 
   
